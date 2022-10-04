@@ -1,0 +1,11 @@
+node_modules
+dist
+test
+.dockerignore
+.eslintrc.js
+.gitignore
+.prettierrc
+Dockerfile
+fly.toml
+LICENSE
+README.md

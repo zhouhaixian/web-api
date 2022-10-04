@@ -1,0 +1,51 @@
+# fly.toml file generated for eihei on 2022-10-04T17:57:55+08:00
+
+app = "eihei"
+kill_signal = "SIGTERM"
+kill_timeout = 5
+processes = []
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+  PORT = 8080
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
+
+[[services]]
+  internal_port = 8080
+  processes = ["app"]
+  protocol = "tcp"
+  script_checks = []
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.http_checks]]
+    grace_period = "15s"
+    interval = 10000
+    method = "get"
+    path = "/healthz"
+    protocol = "http"
+    restart_limit = 3
+    timeout = 2000
+
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "15s"
+    interval = "15s"
+    restart_limit = 3
+    timeout = "2s"

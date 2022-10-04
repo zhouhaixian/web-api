@@ -1,8 +1,8 @@
 {
   "name": "web-api",
   "version": "1.0.0",
-  "description": "",
-  "author": "",
+  "description": "Web API",
+  "author": "Zhou Haixian",
   "private": true,
   "license": "GPL-3.0",
   "scripts": {
